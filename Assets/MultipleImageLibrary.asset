@@ -1,0 +1,507 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: MultipleImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5659620431318551035
+  m_GuidHigh: 16780345116763734161
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5293886422870362568
+      m_GuidHigh: 10016301283671390612
+    m_SerializedTextureGuid:
+      m_GuidLow: 2645407775618304054
+      m_GuidHigh: 17108036207065943867
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: BeF2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5523336480305143870
+      m_GuidHigh: 9421973918963917966
+    m_SerializedTextureGuid:
+      m_GuidLow: 9577995446044607150
+      m_GuidHigh: 5735804473802576683
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: O3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4677333277910217328
+      m_GuidHigh: 3539339231741849746
+    m_SerializedTextureGuid:
+      m_GuidLow: 11836180393011973990
+      m_GuidHigh: 5067779124570680011
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: BF3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5400134300683010873
+      m_GuidHigh: 9289817705734966687
+    m_SerializedTextureGuid:
+      m_GuidLow: 13013542374787338834
+      m_GuidHigh: 7297963143902356329
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CH4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5294245288427554265
+      m_GuidHigh: 10338730812284966550
+    m_SerializedTextureGuid:
+      m_GuidLow: 14148456497035203465
+      m_GuidHigh: 2227171730792547034
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: NH3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4907756107910342699
+      m_GuidHigh: 1559001479449432479
+    m_SerializedTextureGuid:
+      m_GuidLow: 6058275692032470341
+      m_GuidHigh: 11921384549102334841
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: OH2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5334328381672077889
+      m_GuidHigh: 11694962870517590965
+    m_SerializedTextureGuid:
+      m_GuidLow: 9583640178764637533
+      m_GuidHigh: 5610265298048399883
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: PF5
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4732301581355344225
+      m_GuidHigh: 18012322330689295033
+    m_SerializedTextureGuid:
+      m_GuidLow: 3760322530927540519
+      m_GuidHigh: 15726637782192656825
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: SF4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4852086406029142271
+      m_GuidHigh: 4952040100335949988
+    m_SerializedTextureGuid:
+      m_GuidLow: 4961207788367675347
+      m_GuidHigh: 12358871722982389962
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: BrF3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5662123508175831867
+      m_GuidHigh: 11149707639401014704
+    m_SerializedTextureGuid:
+      m_GuidLow: 11857739257103655446
+      m_GuidHigh: 17360674070538256362
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: XeF2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4623729185634898226
+      m_GuidHigh: 18046574638524104855
+    m_SerializedTextureGuid:
+      m_GuidLow: 6106942736296798251
+      m_GuidHigh: 2818688872014969290
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: SF6
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5399368718823972773
+      m_GuidHigh: 9251134977640508586
+    m_SerializedTextureGuid:
+      m_GuidLow: 13009677147008310361
+      m_GuidHigh: 1272850231225064411
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: BrF5
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5291034707638898122
+      m_GuidHigh: 10481083837220052116
+    m_SerializedTextureGuid:
+      m_GuidLow: 3792694855192496310
+      m_GuidHigh: 17784841796981576184
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: XeF4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5161585015600109924
+      m_GuidHigh: 1334574677987391134
+    m_SerializedTextureGuid:
+      m_GuidLow: 7241181268131075680
+      m_GuidHigh: 8937881266941022315
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: BeF2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5348430458870929657
+      m_GuidHigh: 14763893863819789488
+    m_SerializedTextureGuid:
+      m_GuidLow: 17654043935682498024
+      m_GuidHigh: 11763788325396560299
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: PF5
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4749613909751949895
+      m_GuidHigh: 16612537355097131408
+    m_SerializedTextureGuid:
+      m_GuidLow: 9579568253498906825
+      m_GuidHigh: 15946850540242213435
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: SF6
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5521458137592815595
+      m_GuidHigh: 10954153428951956887
+    m_SerializedTextureGuid:
+      m_GuidLow: 9531089926514822939
+      m_GuidHigh: 15917752214836991960
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: sOrbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5575715941489426448
+      m_GuidHigh: 236172760534527657
+    m_SerializedTextureGuid:
+      m_GuidLow: 1492630046629963247
+      m_GuidHigh: 95281836882970954
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: pOrbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4841260195212690072
+      m_GuidHigh: 4646097312761933235
+    m_SerializedTextureGuid:
+      m_GuidLow: 15323305397644408956
+      m_GuidHigh: 11072737693782697065
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: dz2Orbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5361715784365645468
+      m_GuidHigh: 8635264949950641062
+    m_SerializedTextureGuid:
+      m_GuidLow: 7213906004996758118
+      m_GuidHigh: 17792243377566625273
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: dGenericOrbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4980584467221848199
+      m_GuidHigh: 13989968430202677136
+    m_SerializedTextureGuid:
+      m_GuidLow: 10671838404006650679
+      m_GuidHigh: 16458258150903576491
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Nicotine
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5361100133056352837
+      m_GuidHigh: 9756297250556959924
+    m_SerializedTextureGuid:
+      m_GuidLow: 8370361932579311002
+      m_GuidHigh: 13412593050738229368
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Triptane
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5385059563141411698
+      m_GuidHigh: 10802193173593296527
+    m_SerializedTextureGuid:
+      m_GuidLow: 2649617330992474002
+      m_GuidHigh: 34585939216658394
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Norborane
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4875546172813446987
+      m_GuidHigh: 10729268017552411071
+    m_SerializedTextureGuid:
+      m_GuidLow: 3811530607149635878
+      m_GuidHigh: 18168649936226873353
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Triethoxybenzene
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5498739777614538705
+      m_GuidHigh: 11276270643675566783
+    m_SerializedTextureGuid:
+      m_GuidLow: 15300196847428036998
+      m_GuidHigh: 14378097765038485304
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Ethane (staggered)
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4669502196420911903
+      m_GuidHigh: 4841400607962777753
+    m_SerializedTextureGuid:
+      m_GuidLow: 15339262476718995093
+      m_GuidHigh: 15444431338430676809
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: EthyleneNoPI
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4908090005343243758
+      m_GuidHigh: 1014023939873147046
+    m_SerializedTextureGuid:
+      m_GuidLow: 7243297389890492140
+      m_GuidHigh: 18146932982151126523
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: EthylenePI
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5157055054216380569
+      m_GuidHigh: 3346993810529516469
+    m_SerializedTextureGuid:
+      m_GuidLow: 10672325520982990708
+      m_GuidHigh: 4216755486404070587
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: AcetyleneNoPI
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5204273388367355103
+      m_GuidHigh: 18077518417777834687
+    m_SerializedTextureGuid:
+      m_GuidLow: 16483847031012542914
+      m_GuidHigh: 3394154142763812203
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: AcetylenePI
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5359150869592292692
+      m_GuidHigh: 13504657255792013742
+    m_SerializedTextureGuid:
+      m_GuidLow: 16489818964695430619
+      m_GuidHigh: 4161176319026819784
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Doxorubicin
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5055052571361886652
+      m_GuidHigh: 16940104632733783451
+    m_SerializedTextureGuid:
+      m_GuidLow: 14175090813521889513
+      m_GuidHigh: 13461026449485085928
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Levomethamphetamine
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5206174804603271816
+      m_GuidHigh: 8321334563809565320
+    m_SerializedTextureGuid:
+      m_GuidLow: 2596088886383354187
+      m_GuidHigh: 17489167151922321083
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Dextromethamphetamine
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5385838060516155019
+      m_GuidHigh: 7345784464692055977
+    m_SerializedTextureGuid:
+      m_GuidLow: 15330583402690214833
+      m_GuidHigh: 11887638203777656890
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Isopropanol
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4877366070978001509
+      m_GuidHigh: 1499401768662822826
+    m_SerializedTextureGuid:
+      m_GuidLow: 9545264571504872538
+      m_GuidHigh: 4846615875350326185
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: S-2-Butanol
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5459833815771455024
+      m_GuidHigh: 5739191695913100720
+    m_SerializedTextureGuid:
+      m_GuidLow: 6119223287867593456
+      m_GuidHigh: 14241710769391591945
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: R-2-Butanol
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5617509875344872282
+      m_GuidHigh: 7670707398723138223
+    m_SerializedTextureGuid:
+      m_GuidLow: 4909416743311966635
+      m_GuidHigh: 4682266161789071465
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Meso-1,2-dibromobutane
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5580420869085971650
+      m_GuidHigh: 12970786365457406607
+    m_SerializedTextureGuid:
+      m_GuidLow: 15304560902991700547
+      m_GuidHigh: 10581878878808000106
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Ethane (eclipsed)
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5176480756462168393
+      m_GuidHigh: 10086103911040468374
+    m_SerializedTextureGuid:
+      m_GuidLow: 8416375760944835845
+      m_GuidHigh: 11036204942122271689
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Cyclohexane chair
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4868837392661850998
+      m_GuidHigh: 13318324669946450860
+    m_SerializedTextureGuid:
+      m_GuidLow: 2623382380423692283
+      m_GuidHigh: 5847522262785956187
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Cyclohexane boat
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5363121844073676846
+      m_GuidHigh: 1575288208779247760
+    m_SerializedTextureGuid:
+      m_GuidLow: 16495288146098430639
+      m_GuidHigh: 16549229615066644888
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Methylcyclohexane axial
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4616913869610021983
+      m_GuidHigh: 4044950537107506612
+    m_SerializedTextureGuid:
+      m_GuidLow: 9516808896152365279
+      m_GuidHigh: 10140633429137944568
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Methylcyclohexane equatorial
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4702264397497125709
+      m_GuidHigh: 1958794404588343180
+    m_SerializedTextureGuid:
+      m_GuidLow: 15323320558544011119
+      m_GuidHigh: 16856837728658618267
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: 2-bromo-3-phenylbutane eclipsed
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5172679223195335257
+      m_GuidHigh: 15538439399664189327
+    m_SerializedTextureGuid:
+      m_GuidLow: 9572065711294895416
+      m_GuidHigh: 10421077041748520968
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: 2-bromo-3-phenylbutane E2 geometry
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5462914099467286308
+      m_GuidHigh: 1156206087613308291
+    m_SerializedTextureGuid:
+      m_GuidLow: 6078421350129434413
+      m_GuidHigh: 8478799720962964008
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Bromomethylcyclohexane equatorial
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5108235864306201314
+      m_GuidHigh: 7453093327647827851
+    m_SerializedTextureGuid:
+      m_GuidLow: 11875983778068096017
+      m_GuidHigh: 9750492246351654281
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: Bromomethylcyclohexane axial
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5499145672295590075
+      m_GuidHigh: 5893342349090496671
+    m_SerializedTextureGuid:
+      m_GuidLow: 9582927928652827197
+      m_GuidHigh: 11662722429674014218
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: fxx2minus3y2Orbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5320054860619526432
+      m_GuidHigh: 4967884090212256190
+    m_SerializedTextureGuid:
+      m_GuidLow: 4902230848865532114
+      m_GuidHigh: 11927221110928008745
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: fxyzOrbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4922502261463669878
+      m_GuidHigh: 6423129370454093986
+    m_SerializedTextureGuid:
+      m_GuidLow: 9578952211622572704
+      m_GuidHigh: 8197978607139322760
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: fxz2Orbital
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5396413067528013665
+      m_GuidHigh: 3110653732164911018
+    m_SerializedTextureGuid:
+      m_GuidLow: 13009191664450123963
+      m_GuidHigh: 15608425878817791448
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: fz3Orbital
+    m_Texture: {fileID: 0}
