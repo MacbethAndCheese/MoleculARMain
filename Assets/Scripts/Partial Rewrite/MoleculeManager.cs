@@ -49,39 +49,70 @@ public class MoleculeManager : MonoBehaviour
     public Tools toolState = Tools.Idle; //storage of the active tool, default to idle
 
     private int renderingStyleStorage = 0; //storing rendering style for new molecule creation
+
+    private int _maximumInactivityTime = 900; //normally 800
    
-    public GameObject vPrefabTest; //for internal diagnostic use (I THINK)
+    public GameObject vPrefabTest; //for internal diagnostic use (I THINK) (i think not?)
+
+    public AnimationController testAnimation;
+
+    public AnimationController testAnimHolder;
 
     void Start()
     {
         //this is just for internal testing and should be removed before launch
         //-----
-       /* GameObject vGO = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
-        Visual v = vGO.GetComponent<Visual>();
-        v.vName = "BeF2";
-        v.RunSetup();
-        v.ShowMe();
-        vGO.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
-        activeVisuals.Add(v);
+        /* GameObject vGO = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
+         Visual v = vGO.GetComponent<Visual>();
+         v.vName = "BeF2";
+         v.RunSetup();
+         v.ShowMe();
+         vGO.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
+         activeVisuals.Add(v);
 
-        GameObject vGO2 = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
-        Visual v2 = vGO2.GetComponent<Visual>();
-        v2.vName = "BrF3";
-        v2.RunSetup();
-        v2.ShowMe();
-        vGO2.transform.position = Vector3.left;
-        vGO2.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
-        activeVisuals.Add(v2);*/
+         GameObject vGO2 = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
+         Visual v2 = vGO2.GetComponent<Visual>();
+         v2.vName = "BrF3";
+         v2.RunSetup();
+         v2.ShowMe();
+         vGO2.transform.position = Vector3.left;
+         vGO2.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
+         activeVisuals.Add(v2);*/
         //-----
+        testAnimHolder = Instantiate(testAnimation);
     }
 
     void Update()
     {
-     /*   if (counter == 0)
+        //if (counter % 200 == 0)
+        //{
+        //    testAnimHolder.DebugSetToFrame(0);
+        //}
+        //if (counter % 200 == 100)
+        //{
+        //    testAnimHolder.DebugSetToFrame(1);
+        //}
+
+        float percentFromMouseX = Mathf.Clamp(Input.mousePosition.x / Screen.width * 100f,0f,100f);
+        
+        testAnimHolder.Animate(percentFromMouseX);
+
+        //if (counter < 300)
+        //{
+        //    testAnimHolder.Animate((float)counter % 600/6f);
+        //}
+        //else
+        //{
+        //    testAnimHolder.Animate();
+        //}
+        //counter++;
+
+
+        /*if (counter ==0)
         {
             GameObject newMol = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
             Visual visual = newMol.GetComponent<Visual>();
-            visual.vName = "BrF5";
+            visual.vName = "sOrbitalTestAnim";
             visual.RunSetup();
             visual.ShowMe();
             visual.attachedPosition = Vector3.zero + Vector3.up * offsetFromTrackedImage;
@@ -90,21 +121,21 @@ public class MoleculeManager : MonoBehaviour
             activeVisuals.Add(visual);
         }
          counter++;
-       if(counter == 200)
-         {
-             UpdateRendering(1);
+        if(counter == 200)
+          {
+              UpdateRendering(1);
 
-         }
-         if (counter == 400)
-         {
-             UpdateRendering(2);
+          }
+          if (counter == 400)
+          {
+              UpdateRendering(2);
 
-         }
-         if (counter == 600)
-         {
-             UpdateRendering(3);
+          }
+          if (counter == 600)
+          {
+              UpdateRendering(3);
 
-         }*/
+          }*/
 
         //if (scale > 100) { scale = 1; }
         //scale+=0.1f;
@@ -312,7 +343,7 @@ public class MoleculeManager : MonoBehaviour
         foreach(Visual vis in activeVisuals)
         {
            vis.timeActiveWithoutUpdate++; //THIS IS WHAT ALLOWS FOR REMOVAL AFTER LONG EXPOSURE OF NO INTERACTION 
-            if (vis.timeActiveWithoutUpdate > 800) {
+            if (vis.timeActiveWithoutUpdate > _maximumInactivityTime) {
                 toRemoveBuffer.Add(vis);
                 thingsRemoved = true;
             }

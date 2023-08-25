@@ -70,11 +70,11 @@ public class ModelDictionary : MonoBehaviour
     {
         foreach(KeyValuePair<string,List<GameObject>> kvp in ModelsByVisualName)
         {
-            Debug.Log( "OVERALL GROUP " + kvp.Key);
+            //Debug.Log( "OVERALL GROUP " + kvp.Key);
             foreach(GameObject gO in kvp.Value)
             {
 
-                Debug.Log( kvp.Key +" " +gO.name);
+             //   Debug.Log( kvp.Key +" " +gO.name);
 
             }
         }

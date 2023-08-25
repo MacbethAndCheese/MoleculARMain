@@ -32,6 +32,7 @@ public class MoleculeMaster : MonoBehaviour
         { "F", 0.147f },
         { "P", 0.18f },
         { "S", 0.18f },
+        { "Cl", 0.175f },
         { "Br", 0.185f },
         { "Xe", 0.216f },
           };
