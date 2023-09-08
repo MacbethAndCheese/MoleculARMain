@@ -290,6 +290,10 @@ public class NewTouchManager : MonoBehaviour
     {
         if (Input.touchCount > 0) //if there is 1 or more fingers touching
         {
+            if (Input.touchCount >= 3)
+                m_MoleculeManager.AnimationScrubbingOccuring = true;
+            else
+                m_MoleculeManager.AnimationScrubbingOccuring = false;
             touch = Input.GetTouch(0);//get the 1st of finger touches,
                                       //this means that the position for multiple finger touches (mainly 3 touches)
                                       //depends on this first finger, not the others
@@ -327,10 +331,18 @@ public class NewTouchManager : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved: //if the finger is moving
+                    
                     if (Input.touchCount != 2)//in any siutation except two fingers touching
                     {
-                        m_MoleculeManager.ChangeTransformsOfMolecules(touch.position, touch.deltaPosition, Input.touchCount);
-                        //pass just the position of first finger, change in position of first finger and the number of fingers
+                        if (Input.touchCount == 1) //for one finger touch
+                        {
+                            m_MoleculeManager.ChangeTransformsOfMolecules(touch.position, touch.deltaPosition, Input.touchCount);
+                            //pass just the position of first finger, change in position of first finger and the number of fingers
+                        }
+                        else
+                        {
+                            m_MoleculeManager.ControlAnimations(touch.position,touch.deltaPosition);
+                        }
                     }
                     else {//if its a two finger touch
                         m_MoleculeManager.ChangeTransformsOfMoleculesTwoTouch(touch.position, Input.GetTouch(1).position);

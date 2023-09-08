@@ -89,7 +89,7 @@ public class CanvasManager : MonoBehaviour
     {
         VisualizeTheTouch(); //seems to look ok
         toolText.text = m_MoleculeManager.toolState.ToString();
-        switch (m_MoleculeManager.toolState)
+        switch (m_MoleculeManager.toolState) 
         {
             case (MoleculeManager.Tools.Idle):
                 //Debug.Log("Idle");
@@ -103,8 +103,8 @@ public class CanvasManager : MonoBehaviour
                 //Debug.Log("Scale");
                 break;
 
-            case (MoleculeManager.Tools.Move):
-                //Debug.Log("Move");
+            case (MoleculeManager.Tools.AnimationControl):
+                //Debug.Log("AnimationControl");
                 break;
 
             default:

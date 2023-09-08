@@ -42,21 +42,24 @@ public class MoleculeManager : MonoBehaviour
     private Vector2[] twoTouchPos= new Vector2[] { new Vector2(-999, 0), new Vector2(0, 0) }; //storage of the positions of the two fingers
                                                                                               //for scaling size
 
+    public bool AnimationScrubbingOccuring = false; //this holds if the screen has an active 3 or more finger touch occuring
+
     private int counter = 0; //for internal diagnostic
 
-    public enum Tools { Idle = 0, Rotate = 1, Scale = 2, Move = 3 }; //enum defining tools, mainly for diagnostic purposes
+    public enum Tools { Idle = 0, Rotate = 1, Scale = 2, AnimationControl = 3 }; //enum defining tools, mainly for diagnostic purposes
 
-    public Tools toolState = Tools.Idle; //storage of the active tool, default to idle
+    public Tools toolState = Tools.Idle; //storage of the active tool, default to idle ///THIS WHOLE THING IS DEPRECATED WE GOTTA DO SOME CLEANING OF THIS GODDAMN CODE GOODNESS
 
     private int renderingStyleStorage = 0; //storing rendering style for new molecule creation
 
-    private int _maximumInactivityTime = 900; //normally 800
+    private int _maximumInactivityTime = 90000; //normally 800
    
     public GameObject vPrefabTest; //for internal diagnostic use (I THINK) (i think not?)
 
     public AnimationController testAnimation;
 
     public AnimationController testAnimHolder;
+    float pMX = 0f;
 
     void Start()
     {
@@ -92,10 +95,23 @@ public class MoleculeManager : MonoBehaviour
         //{
         //    testAnimHolder.DebugSetToFrame(1);
         //}
+        //if (Input.GetMouseButton(0))
+        //{
+        //    float percentChange = ((Input.mousePosition.x - pMX) / Screen.width) * 100f;
+        //    Debug.Log($"percent change {percentChange}");
+        //    testAnimHolder.ScrubAnimation(percentChange);
 
-        float percentFromMouseX = Mathf.Clamp(Input.mousePosition.x / Screen.width * 100f,0f,100f);
-        
-        testAnimHolder.Animate(percentFromMouseX);
+        //}
+
+        //testAnimHolder.Animate();
+        testAnimHolder.Animate(Mathf.Clamp(Input.mousePosition.x/Screen.width*100f, 0, 100f));
+
+
+
+        //pMX = Input.mousePosition.x;
+        //if (!AnimationScrubbingOccuring)
+        //    testAnimHolder.Animate();
+
 
         //if (counter < 300)
         //{
@@ -197,6 +213,14 @@ public class MoleculeManager : MonoBehaviour
         toolState = (Tools)touchNumber; //set tool state based on enum of touch number
     }
 
+    public void ControlAnimations(Vector2 position, Vector2 change)
+    {
+        //float percentOfAnimation  = Mathf.Clamp(position.x / Screen.width * 100f, 0f, 100f);
+        // testAnimHolder.Animate(percentOfAnimation);
+        Debug.Log(change.x / Screen.width * 100f + " HEY THIS IS WHAT THE CHANGE IS");
+        testAnimHolder.ScrubAnimation(change.x / Screen.width * 100f);
+    }
+
     /// <summary>
     /// This handles both the rotate and move functions of the 
     /// </summary>
@@ -229,8 +253,7 @@ public class MoleculeManager : MonoBehaviour
                     break;
 
                 case 3:
-                    movedByPosition += (cameraRight * change.x + Vector3.up * change.y)*moveSpeedModifier;
-                    Debug.Log(movedByPosition);
+                    //movedByPosition += (cameraRight * change.x + Vector3.up * change.y)*moveSpeedModifier; //turned off the moving
                     break;
                 default:
                     break;

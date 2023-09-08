@@ -5516,7 +5516,7 @@ GameObject:
   - component: {fileID: 6928007352771261185}
   - component: {fileID: -101144003001589936}
   m_Layer: 0
-  m_Name: ActualAnimator
+  m_Name: RingFlipAnimator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5554,6 +5554,7 @@ MonoBehaviour:
   - {fileID: 4151747311014383889, guid: ea536722e9e7845fa98f428d3d70bfb8, type: 3}
   - {fileID: 4151747311014383889, guid: 4f1a82e696a6d42fc8b819cb5df32ae6, type: 3}
   MM: {fileID: 0}
+  AnimateUsingPositions: 1
 --- !u!1 &7617675768263699741
 GameObject:
   m_ObjectHideFlags: 0

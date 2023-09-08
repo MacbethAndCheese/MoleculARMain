@@ -51,6 +51,7 @@ public class AnimationFrame : MonoBehaviour
         Quaternion returnRot = Quaternion.identity;
         float returnPresence = 1;
 
+        //Debug.Log(name);
         foreach (InfoHolder fI in FrameInfo)
         {
             if (fI.objName.Equals(name))

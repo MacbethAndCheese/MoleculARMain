@@ -10,9 +10,13 @@ public class AnimationController : MonoBehaviour
     public AnimationFrame[] frames;
     public MoleculeMaster MM;
 
+    public bool AnimateUsingPositions;
+
     private int _maxSubFrames = 1200;
     private int _currentSubFrame = 0;
     private int _animationDir = 1;
+
+    
 
 
     void Awake()
@@ -52,6 +56,7 @@ public class AnimationController : MonoBehaviour
         int lowerFrameNumber = LowerFrameBetweenAndDistance.Item1;
         float percentBetweenFrames = LowerFrameBetweenAndDistance.Item2;
         AnimateBetweenFrames(percentBetweenFrames,lowerFrameNumber,lowerFrameNumber+1);
+        Debug.Log(percentBetweenFrames);
     }
 
     public void Animate(float percentThroughEntireAnimation)
@@ -64,14 +69,38 @@ public class AnimationController : MonoBehaviour
         var LowerFrameBetweenAndDistance = FindWhichFramesBetweenAndHowFar(_currentSubFrame, frames.Length, _maxSubFrames);
         int lowerFrameNumber = LowerFrameBetweenAndDistance.Item1;
         float percentBetweenFrames = LowerFrameBetweenAndDistance.Item2;
-        Debug.Log(percentBetweenFrames + " < % thru frames -- entire animation % thru > " + percentThroughEntireAnimation);
+      //  Debug.Log(percentBetweenFrames + " < % thru frames -- entire animation % thru > " + percentThroughEntireAnimation);
         AnimateBetweenFrames(percentBetweenFrames, lowerFrameNumber, lowerFrameNumber + 1);
     }
+
+    public void ScrubAnimation(float changePercent)
+    {
+        _currentSubFrame += Mathf.FloorToInt((float)_maxSubFrames * changePercent / 100f);
+        _currentSubFrame = Mathf.Clamp(_currentSubFrame, 0, _maxSubFrames - 1);
+        Debug.Log(_currentSubFrame);
+        var LowerFrameBetweenAndDistance = FindWhichFramesBetweenAndHowFar(_currentSubFrame, frames.Length, _maxSubFrames);
+        int lowerFrameNumber = LowerFrameBetweenAndDistance.Item1;
+        float percentBetweenFrames = LowerFrameBetweenAndDistance.Item2;
+        AnimateBetweenFrames(percentBetweenFrames, lowerFrameNumber, lowerFrameNumber + 1);
+    }
+
+    
 
     void ConnectObjects()
     {
         MeshRenderer[] fetch = GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer f in fetch)
+        {
+            if (f.name.Contains("bond"))
+            {
+                //do nothing
+            }
+            else
+            {
+                MainAnimationObjects.Add(new AnimationObject(f.transform.gameObject, f.name.GetUntilOrEmpty("_"), f.name.Contains("#") ? true : false, f.name.Contains("*") ? true : false, 0f));
+            }
+        }
+        foreach(MeshRenderer f in fetch)
         {
             if (f.name.Contains("bond"))
             {
@@ -85,17 +114,17 @@ public class AnimationController : MonoBehaviour
                     if (secondObjectStartindex != -1)
                     {
                         string secondObject = name.Substring(secondObjectStartindex + 1);
-                        Debug.Log(name + " ---- /" + firstObject + "/ <> /" + secondObject + "/");
-                        GameObject[] connected = new GameObject[2];
-                        foreach (MeshRenderer toMatch in fetch)
+                        //   Debug.Log(name + " ---- /" + firstObject + "/ <> /" + secondObject + "/");
+                        AnimationObject[] connected = new AnimationObject[2];
+                        foreach (AnimationObject mAO in MainAnimationObjects)
                         {
-                            if (firstObject.Equals(toMatch.name.GetUntilOrEmpty("_")))
+                            if (firstObject.Equals(mAO.objName))
                             {
-                                connected[0] = toMatch.transform.gameObject;
+                                connected[0] = mAO;
                             }
-                            if (secondObject.Equals(toMatch.name.GetUntilOrEmpty("_")))
+                            if (secondObject.Equals(mAO.objName))
                             {
-                                connected[1] = toMatch.transform.gameObject;
+                                connected[1] = mAO;
                             }
                         }
                         if (connected[0] == null || connected[1] == null)
@@ -117,36 +146,40 @@ public class AnimationController : MonoBehaviour
                     Debug.LogError("ISSUE WITH NAMING OF THE BONDS");
                 }
             }
-            else
-            {
-                MainAnimationObjects.Add(new AnimationObject(f.transform.gameObject, f.name.GetUntilOrEmpty("_"), f.name.Contains("#") ? true : false));
-            }
+
         }
 
+
+        //do the neighbouring/next door objects
         foreach (AnimationObject sAO in SubAnimationObjects)
         {
             foreach (AnimationObject mAO in MainAnimationObjects)
             {
-                if (sAO.ConnectedMasterObjects[0].name.GetUntilOrEmpty("_").Equals(mAO.objName))
+                if (sAO.ConnectedMasterObjects[0].objName.Equals(mAO.objName))
                 {
                     mAO.NextDoorObjects.Add(sAO.ConnectedMasterObjects[1]);
                 }
             }
+            
+        }
+        foreach (AnimationObject mAO in MainAnimationObjects)
+        {
+            mAO.NextDoorObjects.Sort((nDO1, nDo2) => nDo2.IsMasterObj.CompareTo(nDO1.IsMasterObj));
         }
 
         foreach (AnimationObject aO in MainAnimationObjects)
         {
             string connects = "";
-            foreach (GameObject gO in aO.NextDoorObjects)
+            foreach (AnimationObject nDO in aO.NextDoorObjects)
             {
-                connects += " " + gO.name + ",";
+                connects += " " + nDO.objName + ",";
             }
-            Debug.Log(aO.objName + (aO.IsMasterObj ? " which is master" : " which is not a master") + " is connected to" + connects);
+            Debug.Log(aO.objName + (aO.IsMasterObj ? " which is master" : " which is not a master") + (aO.IsSlaveObj ? " which is slave" : " which is not a slave") + " is connected to" + connects);
 
         }
         foreach (AnimationObject aO in SubAnimationObjects)
         {
-            Debug.Log(aO.ConnectedMasterObjects[0].name + "-" + aO.ConnectedMasterObjects[1].name);
+            Debug.Log(aO.ConnectedMasterObjects[0].objName + "-" + aO.ConnectedMasterObjects[1].objName);
         }
     }
 
@@ -167,8 +200,10 @@ public class AnimationController : MonoBehaviour
         foreach (AnimationObject mAO in MainAnimationObjects)
         {
             mAO.SetStartOfFrameNextDoorDist();
+            mAO.SetRotationsToApply();
         }
     }
+    
 
     public void DebugSetToFrame(int frame)
     {
@@ -180,14 +215,14 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    public void AnimateBetweenFrames(float percentToNextFrame, int startFrame, int endFrame)
+    void AnimateBetweenFrames(float percentToNextFrame, int startFrame, int endFrame)
     {
         //Debug.Log(percentToNextFrame);
         //Debug.Log(MainAnimationObjects.Count);
         foreach (AnimationObject mAO in MainAnimationObjects)
         {
-            //  Debug.Log("here");
-            mAO.AnimateBetweenFrames(percentToNextFrame, startFrame, endFrame);
+            if(mAO.IsMasterObj)
+                mAO.AnimateBetweenFrames(percentToNextFrame, startFrame, endFrame,Vector3.zero, AnimateUsingPositions);
         }
         foreach (AnimationObject sAO in SubAnimationObjects)
         {
@@ -204,7 +239,7 @@ public class AnimationController : MonoBehaviour
         lowerFrameNum = Mathf.FloorToInt((float) currentSubFrame / subFramesBetweenMasterFrames);
         
         percentBetweenFrames = ((float)currentSubFrame % subFramesBetweenMasterFrames)/subFramesBetweenMasterFrames*100f;
-        Debug.Log(percentBetweenFrames+" < % between master frames, lower frame # > "+lowerFrameNum+"     current sub frame> "+currentSubFrame);
+       // Debug.Log(percentBetweenFrames+" < % between master frames, lower frame # > "+lowerFrameNum+"     current sub frame> "+currentSubFrame);
 
         return (lowerFrameNum, percentBetweenFrames);
     }

@@ -1219,9 +1219,10 @@ MonoBehaviour:
   cameraTransform: {fileID: 487186421}
   moleculeMasterPrefab: {fileID: 412855566332091257, guid: 0d913c55ba8064246bd1ad50ad0368c4, type: 3}
   possibleModels: []
+  AnimationScrubbingOccuring: 0
   toolState: 0
   vPrefabTest: {fileID: 412855566332091257, guid: 0d913c55ba8064246bd1ad50ad0368c4, type: 3}
-  testAnimation: {fileID: -101144003001589936, guid: 09c940450413c4a8fac9d97910703b79, type: 3}
+  testAnimation: {fileID: -78855009637940577, guid: 019a35f48b3444b23bd64b0bc3127fb6, type: 3}
   testAnimHolder: {fileID: 0}
 --- !u!114 &737582826
 MonoBehaviour:
