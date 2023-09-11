@@ -246,21 +246,21 @@ public class AnimationObject
         }
     }
 
-    public void SlaveAnimation(float percentToNextFrame, int startFrame, int endFrame)
+    public void SlaveAnimation(float percentToNextFrame, int startFrame, int endFrame, string nameOfCaller = "")
     {
         Vector3 alongPath = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
 
         attachedObject.transform.position = alongPath;
         foreach (AnimationObject aO in NextDoorObjects)
         {
-            if (aO.IsSlaveObj)
+            if (aO.IsSlaveObj && !aO.objName.Equals(nameOfCaller))
             {
-                aO.SlaveAnimation(percentToNextFrame, startFrame, endFrame);
+                aO.SlaveAnimation(percentToNextFrame, startFrame, endFrame, objName);
             }
         }
     }
 
-    public void SlaveAnimation(float percentToNextFrame, int startFrame,int endFrame, (Vector3,Vector3,float) rTAData, Vector3 recursionAdjusment)
+    public void SlaveAnimation(float percentToNextFrame, int startFrame,int endFrame, (Vector3,Vector3,float) rTAData, Vector3 recursionAdjusment, string nameOfCaller = "")
     {
         Vector3 alongSlavePath = GetPositionFromRotationAroundPointAroundAxisBetweenFrame(percentToNextFrame, Positions[startFrame], rTAData.Item1, rTAData.Item2, rTAData.Item3); 
         Vector3 alongPath = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
@@ -277,9 +277,9 @@ public class AnimationObject
 
         foreach (AnimationObject aO in NextDoorObjects)
         {
-            if (aO.IsSlaveObj)
+            if (aO.IsSlaveObj && !aO.objName.Equals(nameOfCaller))
             {
-                aO.SlaveAnimation(percentToNextFrame, startFrame, endFrame, rTAData, recursionAdjusment);
+                aO.SlaveAnimation(percentToNextFrame, startFrame, endFrame, rTAData, recursionAdjusment, objName);
             }
         }
     }
