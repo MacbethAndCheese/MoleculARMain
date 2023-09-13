@@ -2353,9 +2353,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frames:
   - {fileID: -8935033720968070165, guid: e319235fe82564279872b42edf67934c, type: 3}
-  - {fileID: -8935033720968070165, guid: 1625b03e1767d4618bdd68d7e6e2465b, type: 3}
+  - {fileID: -8935033720968070165, guid: 086af7bc2054143b5aa7d6fbc7b946c1, type: 3}
   MM: {fileID: 0}
-  AnimateUsingPositions: 0
+  AnimateUsingPositions: 1
 --- !u!1 &4893771776058419860
 GameObject:
   m_ObjectHideFlags: 0
