@@ -1726,7 +1726,10 @@ MonoBehaviour:
   - {fileID: 4236929161085013277, guid: cb759b22423494ee2bae77c4f4d91899, type: 3}
   - {fileID: 4567682515549423146, guid: 016f1bde371d743f7aaf94593043e094, type: 3}
   - {fileID: 5889016245205124527, guid: 8543e6ef70cbf48e1988f0a19544c4fa, type: 3}
-  - {fileID: 8268435575161648978, guid: 78aa1f4c1479f4132accb97fd57e1e91, type: 3}
+  animationControllers:
+  - {fileID: -2589581700710983590, guid: 0a85e30db12244474b3e2a9f075b8cfb, type: 3}
+  - {fileID: -101144003001589936, guid: 09c940450413c4a8fac9d97910703b79, type: 3}
+  - {fileID: -78855009637940577, guid: 019a35f48b3444b23bd64b0bc3127fb6, type: 3}
 --- !u!4 &1455732219
 Transform:
   m_ObjectHideFlags: 0

@@ -29,8 +29,8 @@ public class AnimationController : MonoBehaviour
         }
         foreach (AnimationFrame aF in frames)
         {
-            Debug.Log("---");
-            aF.DebugFrameInfo();
+            //Debug.Log("---");
+            //aF.DebugFrameInfo();
         }
         SetAnimationObjectsToFrameInfos();
     }
@@ -56,7 +56,7 @@ public class AnimationController : MonoBehaviour
         int lowerFrameNumber = LowerFrameBetweenAndDistance.Item1;
         float percentBetweenFrames = LowerFrameBetweenAndDistance.Item2;
         AnimateBetweenFrames(percentBetweenFrames,lowerFrameNumber,lowerFrameNumber+1);
-        Debug.Log(percentBetweenFrames);
+        //Debug.Log(percentBetweenFrames);
     }
 
     public void Animate(float percentThroughEntireAnimation)
@@ -226,7 +226,7 @@ public class AnimationController : MonoBehaviour
         }
         foreach (AnimationObject sAO in SubAnimationObjects)
         {
-            sAO.AnimateBetweenFramesBonds();
+            sAO.AnimateBetweenFramesBonds(percentToNextFrame,startFrame, endFrame);
         }
     }
 

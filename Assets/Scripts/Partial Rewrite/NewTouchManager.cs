@@ -341,6 +341,7 @@ public class NewTouchManager : MonoBehaviour
                         }
                         else
                         {
+                            m_MoleculeManager.ChangeTransformsOfMolecules(touch.position, touch.deltaPosition, Input.touchCount);
                             m_MoleculeManager.ControlAnimations(touch.position,touch.deltaPosition);
                         }
                     }

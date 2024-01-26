@@ -21,6 +21,7 @@ public class AnimationObject
     public float[] DistToMainNeighbourAtFrame;
     public float TotalAngleRequiredToRotate;
 
+    private Color startColor;
     private MoleculeMaster _mM = GameObject.FindObjectOfType<MoleculeMaster>();
     private float _VDWScaler = .5f;
 
@@ -32,6 +33,7 @@ public class AnimationObject
         IsSubObj = true;
         IsMasterObj = false;
         IsSlaveObj = false;
+        startColor = attachedObject.GetComponent<Renderer>().material.color;
         //  _mM = GameObject.FindObjectOfType<MoleculeMaster>();
     }
     public AnimationObject(GameObject atC, string nameC, bool isMasterC, bool isSlaveC, float tARTRC)
@@ -102,6 +104,7 @@ public class AnimationObject
             {
                 if (i != 0)
                 {
+                    
                     float amountToRot = -GetAngleBetweenTwoVectorsWhenRotatedAroundAxis(Positions[i] - rotPointObj.Positions[i], Positions[i - 1] - rotPointObj.Positions[i - 1], sumCrossVec); //note this does not calculate the proper amount, in relation to the sumCrossVec
                     //if (correction > 0)
                     //{
@@ -131,8 +134,8 @@ public class AnimationObject
 
     public void SetToFrame(int frame)
     {
-        attachedObject.transform.position = Positions[frame];
-        attachedObject.transform.rotation = Rotations[frame];
+        attachedObject.transform.localPosition = Positions[frame];
+        attachedObject.transform.localRotation = Rotations[frame];
         // do something with Presences[frame];
     }
 
@@ -141,7 +144,7 @@ public class AnimationObject
         if (IsMasterObj)
         {
             percentToNextFrame /= 100f;
-            attachedObject.transform.position = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
+            attachedObject.transform.localPosition = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
             foreach (AnimationObject aO in NextDoorObjects)
             {
                 if (!aO.IsMasterObj) {
@@ -154,14 +157,15 @@ public class AnimationObject
             if (animateUsingPositions)
             {
             Vector3 alongPath = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame) + recursionAdjustmentVector;
-            Vector3 toMainNeighbourFromPath = alongPath - NextDoorObjects[0].attachedObject.transform.position;
+            Vector3 toMainNeighbourFromPath = alongPath - NextDoorObjects[0].attachedObject.transform.localPosition;
             float toMainNeighbourFromPathDist = toMainNeighbourFromPath.magnitude;
             float diffBetweenIdealAndCurrentDist = DistToMainNeighbourAtFrame[startFrame] - toMainNeighbourFromPathDist;
             Vector3 adjustmentAlongPath = toMainNeighbourFromPath.normalized * diffBetweenIdealAndCurrentDist;
-            attachedObject.transform.position = alongPath + adjustmentAlongPath;
-            Debug.DrawLine(NextDoorObjects[0].attachedObject.transform.position, alongPath, Color.red);
-            Debug.DrawLine(alongPath, NextDoorObjects[0].attachedObject.transform.position + recursionAdjustmentVector, Color.green);
-            Debug.DrawLine(InBetweenFramePosition(percentToNextFrame, startFrame, endFrame), alongPath, Color.blue);
+            attachedObject.transform.localPosition = alongPath + adjustmentAlongPath;
+                //Debug.Log(objName + "-- " + Positions[startFrame]);
+                //Debug.DrawLine(NextDoorObjects[0].attachedObject.transform.localPosition, alongPath, Color.red);
+            //Debug.DrawLine(alongPath, NextDoorObjects[0].attachedObject.transform.localPosition + recursionAdjustmentVector, Color.green);
+            //Debug.DrawLine(InBetweenFramePosition(percentToNextFrame, startFrame, endFrame), alongPath, Color.blue);
 
 
             recursionAdjustmentVector += adjustmentAlongPath;
@@ -178,6 +182,7 @@ public class AnimationObject
             {
                 if (!IsSlaveObj)
                 {
+                    Debug.Log(objName + "-- " + Positions[startFrame]);
                     var rTADataEF = RotationsToApply[endFrame].GetValues();
                     var rTADataSF = RotationsToApply[startFrame].GetValues();
                     Vector3 adjustedPivot = CombineVectorsBetweenFramesSmooth(percentToNextFrame, rTADataSF.Item1, rTADataEF.Item1);
@@ -187,15 +192,14 @@ public class AnimationObject
                     {
                         //Vector3 alongCombinedPath = CombineVectorsBetweenFrames(percentToNextFrame, posDefinedByRotation, posDefinedByPath, 10f);
                         Vector3 alongCombinedPath = posDefinedByRotation;
-                        Vector3 masterIshLocation = NextDoorObjects[0].attachedObject.transform.position;
+                        Vector3 masterIshLocation = NextDoorObjects[0].attachedObject.transform.localPosition;
                         Vector3 fromMasterToPath = alongCombinedPath - masterIshLocation;
                         float distFromPointDefinedByRotationToMaster = fromMasterToPath.magnitude;
                         float distDifference = DistToMainNeighbourAtFrame[startFrame] - distFromPointDefinedByRotationToMaster;
                         Vector3 adjustmentAlongPath = fromMasterToPath.normalized * distDifference;
-                        attachedObject.transform.position = alongCombinedPath + adjustmentAlongPath;
+                        attachedObject.transform.localPosition = alongCombinedPath + adjustmentAlongPath;
 
-
-                        //attachedObject.transform.position = CombineVectorsBetweenFrames(percentToNextFrame, posDefinedByRotation, posDefinedByPath, 10f); ///LETS ADD SOME BUMPING BASED ON BOND DISTANCE
+                        //attachedObject.transform.localPosition = CombineVectorsBetweenFrames(percentToNextFrame, posDefinedByRotation, posDefinedByPath, 10f); ///LETS ADD SOME BUMPING BASED ON BOND DISTANCE
                         foreach (AnimationObject aO in NextDoorObjects)
                         {
                             if (aO.IsSlaveObj)
@@ -213,7 +217,7 @@ public class AnimationObject
                         {
                             if (aO.IsSlaveObj)
                             {
-                                attachedObject.transform.position = posDefinedByPath;
+                                attachedObject.transform.localPosition = posDefinedByPath;
                                 aO.SlaveAnimation(percentToNextFrame, startFrame, endFrame);
                             }
                         }
@@ -221,19 +225,19 @@ public class AnimationObject
 
 
                     //if (percentToNextFrame>0.5f)
-                    //    attachedObject.transform.position = GetPositionFromRotationAroundPointAroundAxisBetweenFrame(1f, Positions[startFrame], rTAData.Item1, rTAData.Item2, rTAData.Item3);
+                    //    attachedObject.transform.localPosition = GetPositionFromRotationAroundPointAroundAxisBetweenFrame(1f, Positions[startFrame], rTAData.Item1, rTAData.Item2, rTAData.Item3);
                     //else
-                    //    attachedObject.transform.position = GetPositionFromRotationAroundPointAroundAxisBetweenFrame(0f, Positions[startFrame], rTAData.Item1, rTAData.Item2, rTAData.Item3);
+                    //    attachedObject.transform.localPosition = GetPositionFromRotationAroundPointAroundAxisBetweenFrame(0f, Positions[startFrame], rTAData.Item1, rTAData.Item2, rTAData.Item3);
 
-                    if (objName.Equals("Cl2") || objName.Equals("Br2"))
+                    if (objName.Equals("Cl2") || objName.Equals("Br2") || objName.Equals("Cl2") || objName.Equals("Br1"))
                     {
-                        Debug.DrawLine(NextDoorObjects[0].attachedObject.transform.position, Positions[endFrame], Color.yellow);
-                        Debug.DrawLine(NextDoorObjects[0].attachedObject.transform.position, Positions[startFrame], Color.blue);
+                        Debug.DrawLine(NextDoorObjects[0].attachedObject.transform.localPosition, Positions[endFrame], Color.yellow);
+                        Debug.DrawLine(NextDoorObjects[0].attachedObject.transform.localPosition, Positions[startFrame], Color.blue);
                         Debug.DrawRay(RotationsToApply[endFrame].rotationPoint, RotationsToApply[endFrame].rotationAxis, Color.magenta);
                     }
 
 
-                    //attachedObject.transform.position = RotatePointAroundPivot(Positions[startFrame],RotationsToApply[endFrame].rotationAxis)
+                    //attachedObject.transform.localPosition = RotatePointAroundPivot(Positions[startFrame],RotationsToApply[endFrame].rotationAxis)
                     ///THE TRICK HERE MIGHT BE TO LIKE PUT PUT THE VECTORS AS IF THEY ARE AROUND THE ORIGIN AND THEN DO THE ROTATIONS AND THEN PUT THEM BACK WHERE THEY NEED TO BE
                 }
                 else
@@ -250,7 +254,7 @@ public class AnimationObject
     {
         Vector3 alongPath = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
 
-        attachedObject.transform.position = alongPath;
+        attachedObject.transform.localPosition = alongPath;
         foreach (AnimationObject aO in NextDoorObjects)
         {
             if (aO.IsSlaveObj && !aO.objName.Equals(nameOfCaller))
@@ -266,14 +270,14 @@ public class AnimationObject
         Vector3 alongPath = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
 
         Vector3 alongCombinedPath = CombineVectorsBetweenFramesWithMiddleDominanceOfIdealPosition(percentToNextFrame, alongSlavePath, alongPath, 10f)+recursionAdjusment;
-        Vector3 masterIshLocation = NextDoorObjects[0].attachedObject.transform.position;
+        Vector3 masterIshLocation = NextDoorObjects[0].attachedObject.transform.localPosition;
         Vector3 fromMasterToPath = alongCombinedPath - masterIshLocation;
         float distFromPointDefinedByRotationToMaster = fromMasterToPath.magnitude;
         float distDifference = DistToMainNeighbourAtFrame[startFrame] - distFromPointDefinedByRotationToMaster;
         Vector3 adjustmentAlongPath = fromMasterToPath.normalized * distDifference;
-        attachedObject.transform.position = alongCombinedPath + adjustmentAlongPath;
+        attachedObject.transform.localPosition = alongCombinedPath + adjustmentAlongPath;
         recursionAdjusment += adjustmentAlongPath;
-        //attachedObject.transform.position = CombineVectorsBetweenFrames(percentToNextFrame, alongSlavePath, alongPath, 10f);
+        //attachedObject.transform.localPosition = CombineVectorsBetweenFrames(percentToNextFrame, alongSlavePath, alongPath, 10f);
 
         foreach (AnimationObject aO in NextDoorObjects)
         {
@@ -288,21 +292,36 @@ public class AnimationObject
     {
 
         Vector3 alongPath = InBetweenFramePosition(percentToNextFrame, startFrame, endFrame);
-        Vector3 toMainNeighbourFromPath = alongPath - NextDoorObjects[0].attachedObject.transform.position; //this should be ok, cuz it should have always been set right before the animation! but later i might to make recursion better as it only supports two layers of non master objects. See above.
-        Debug.DrawLine(alongPath, NextDoorObjects[0].attachedObject.transform.position, Color.red);
+        Vector3 toMainNeighbourFromPath = alongPath - NextDoorObjects[0].attachedObject.transform.localPosition; //this should be ok, cuz it should have always been set right before the animation! but later i might to make recursion better as it only supports two layers of non master objects. See above.
+        Debug.DrawLine(alongPath, NextDoorObjects[0].attachedObject.transform.localPosition, Color.red);
         float toMainNeighbourFromPathDist = toMainNeighbourFromPath.magnitude;
         float diffBetweenIdealAndCurrentDist = DistToMainNeighbourAtFrame[startFrame] - toMainNeighbourFromPathDist;
-        attachedObject.transform.position = alongPath + toMainNeighbourFromPath.normalized * diffBetweenIdealAndCurrentDist;
+        attachedObject.transform.localPosition = alongPath + toMainNeighbourFromPath.normalized * diffBetweenIdealAndCurrentDist;
     }
 
-    public void AnimateBetweenFramesBonds()
+    public void AnimateBetweenFramesBonds(float percentToNextFrame, int startFrame, int endFrame) //THE FADING OF BONDS IS DONE IN A VERY JANKY WAY, THIS SHOULD BE FIXED DO___
     {
-        Vector3 bondDir = (ConnectedMasterObjects[0].attachedObject.transform.position - ConnectedMasterObjects[1].attachedObject.transform.position).normalized;
+        Vector3 bondDir = (ConnectedMasterObjects[0].attachedObject.transform.localPosition - ConnectedMasterObjects[1].attachedObject.transform.localPosition).normalized;
         Vector3[] atomEdges = new Vector3[]
         {
-            ConnectedMasterObjects[0].attachedObject.transform.position + -bondDir * _mM.atomVDW[ConnectedMasterObjects[0].objName.TrimEnd(" 1234567890_#".ToCharArray())] * _VDWScaler/2f, //is trim needed?
-            ConnectedMasterObjects[1].attachedObject.transform.position + bondDir * _mM.atomVDW[ConnectedMasterObjects[1].objName.TrimEnd(" 1234567890_#".ToCharArray())] * _VDWScaler/2f
+            ConnectedMasterObjects[0].attachedObject.transform.localPosition + -bondDir * _mM.atomVDW[ConnectedMasterObjects[0].objName.TrimEnd(" 1234567890_#".ToCharArray())] * _VDWScaler/3f, //is trim needed?
+            ConnectedMasterObjects[1].attachedObject.transform.localPosition + bondDir * _mM.atomVDW[ConnectedMasterObjects[1].objName.TrimEnd(" 1234567890_#".ToCharArray())] * _VDWScaler/3f
         };
+        Renderer renderer = this.attachedObject.GetComponent<Renderer>();
+        string matName = renderer.material.name;
+        int startInd = matName.IndexOf("_");
+        if (matName.Substring(startInd + 1, 1).Equals("t")){
+            float startLength = (ConnectedMasterObjects[0].Positions[0] - ConnectedMasterObjects[1].Positions[0]).magnitude;
+            float endLength = (ConnectedMasterObjects[0].Positions[ConnectedMasterObjects[0].Positions.Length-1] - ConnectedMasterObjects[1].Positions[ConnectedMasterObjects[0].Positions.Length - 1]).magnitude;
+            if ((startLength - endLength) < 0) {
+                Color lerpColor = Color.Lerp(startColor, Color.clear, (0.6f*((float)startFrame)+percentToNextFrame*0.6f / 100f)-0.1f );;
+                renderer.material.color = lerpColor;
+            }
+            else {
+                Color lerpColor = Color.Lerp(Color.clear, startColor, (0.6f * ((float)startFrame) + percentToNextFrame * 0.6f / 100f) - 0.1f);
+                renderer.material.color = lerpColor;
+            }
+        }
 
         Vector3 centerPoint = (atomEdges[0] + atomEdges[1]) / 2f;
         float bondLength = Vector3.Distance(atomEdges[0], atomEdges[1]);
@@ -311,9 +330,9 @@ public class AnimationObject
                 centerPoint + bondDir * bondLength/2.5f,
                 centerPoint - bondDir * bondLength/2.5f
         };*/
-        attachedObject.transform.position = centerPoint + bondDir * bondLength / 2.5f;
-        attachedObject.transform.rotation = LookDirection(bondDir);
-        attachedObject.transform.localScale = new Vector3(.015f, bondLength / 2.5f, .015f);
+        attachedObject.transform.localPosition = centerPoint + bondDir * bondLength / 4f;
+        attachedObject.transform.localRotation = LookDirection(bondDir);
+        attachedObject.transform.localScale = new Vector3(.015f, bondLength / 4f, .015f);
 
 
 

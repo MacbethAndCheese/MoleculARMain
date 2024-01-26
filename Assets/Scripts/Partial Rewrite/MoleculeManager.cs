@@ -52,7 +52,7 @@ public class MoleculeManager : MonoBehaviour
 
     private int renderingStyleStorage = 0; //storing rendering style for new molecule creation
 
-    private int _maximumInactivityTime = 90000; //normally 800
+    private int _maximumInactivityTime = 8000; //normally 800
    
     public GameObject vPrefabTest; //for internal diagnostic use (I THINK) (i think not?)
 
@@ -61,6 +61,11 @@ public class MoleculeManager : MonoBehaviour
     public AnimationController testAnimHolder;
     float pMX = 0f;
 
+    public bool BackgroundAnimationHappening = true;
+
+    /// <summary>
+    /// TODO still, fix the text in instructions. Figure out how to make anchor point shifting still possible whilst also letting three finger touch work for animation. Toggling on and off of animation scrolling. 
+    /// </summary>
     void Start()
     {
         //this is just for internal testing and should be removed before launch
@@ -82,7 +87,7 @@ public class MoleculeManager : MonoBehaviour
          vGO2.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
          activeVisuals.Add(v2);*/
         //-----
-        testAnimHolder = Instantiate(testAnimation);
+        //////testAnimHolder = Instantiate(testAnimation);
     }
 
     void Update()
@@ -104,7 +109,6 @@ public class MoleculeManager : MonoBehaviour
         //}
 
         //testAnimHolder.Animate();
-        testAnimHolder.Animate(Mathf.Clamp(Input.mousePosition.x/Screen.width*100f, 0, 100f));
 
 
 
@@ -128,38 +132,54 @@ public class MoleculeManager : MonoBehaviour
         {
             GameObject newMol = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
             Visual visual = newMol.GetComponent<Visual>();
-            visual.vName = "sOrbitalTestAnim";
+            visual.vName = "SN2Anim";
             visual.RunSetup();
             visual.ShowMe();
             visual.attachedPosition = Vector3.zero + Vector3.up * offsetFromTrackedImage;
             newMol.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
             visual.changeRenderingMethod(renderingStyleStorage); // make sure new visual has the correct rendering method 
             activeVisuals.Add(visual);
+            //testAnimHolder=visual.GetComponentInChildren<AnimationController>();
+            //testAnimHolder.Animate(Mathf.Clamp(Input.mousePosition.x / Screen.width * 100f, 0, 100f));
+
         }
-         counter++;
-        if(counter == 200)
-          {
-              UpdateRendering(1);
+        counter++;*/
 
-          }
-          if (counter == 400)
-          {
-              UpdateRendering(2);
 
-          }
-          if (counter == 600)
-          {
-              UpdateRendering(3);
+        //if(counter == 200)
+        //  {
+        //      UpdateRendering(1);
 
-          }*/
+        //  }
+        //  if (counter == 400)
+        //  {
+        //      UpdateRendering(2);
+
+        //  }
+        //  if (counter == 600)
+        //  {
+        //      UpdateRendering(3);
+
+        //  }
 
         //if (scale > 100) { scale = 1; }
         //scale+=0.1f;
         //Debug.Log(scale);
         foreach (Visual mB in activeVisuals) //for every active visual
         {
-            mB.gameObject.transform.position = mB.attachedPosition + movedByPosition; //adjust their position by the amount
-                                                                                      //that it has all been moved by 
+            if (!mB.isAnimation)
+            {
+                mB.gameObject.transform.position = mB.attachedPosition + movedByPosition;
+            }
+            else
+            {
+                if (BackgroundAnimationHappening)
+                {
+                    mB.animController.Animate();
+                }
+                mB.gameObject.transform.position = mB.attachedPosition;
+            } //adjust their position by the amount
+              //that it has all been moved by 
         }
         if (CheckActivity()) //check if a QR code is still actively in view for each visual, and assign those not active to be removed
         {
@@ -215,10 +235,17 @@ public class MoleculeManager : MonoBehaviour
 
     public void ControlAnimations(Vector2 position, Vector2 change)
     {
+        foreach (Visual aV in activeVisuals)
+        {
+            if (aV.isAnimation)
+            {
+                aV.animController.ScrubAnimation(change.x / Screen.width * 100f);
+            }
+        }
         //float percentOfAnimation  = Mathf.Clamp(position.x / Screen.width * 100f, 0f, 100f);
         // testAnimHolder.Animate(percentOfAnimation);
-        Debug.Log(change.x / Screen.width * 100f + " HEY THIS IS WHAT THE CHANGE IS");
-        testAnimHolder.ScrubAnimation(change.x / Screen.width * 100f);
+        //Debug.Log(change.x / Screen.width * 100f + " HEY THIS IS WHAT THE CHANGE IS");
+        //testAnimHolder.ScrubAnimation(change.x / Screen.width * 100f);
     }
 
     /// <summary>
@@ -293,12 +320,15 @@ public class MoleculeManager : MonoBehaviour
     public void ResetMoleculePositions()
     {
         movedByPosition = Vector3.zero;
+        BackgroundAnimationHappening = !BackgroundAnimationHappening;
+
         Debug.Log("reset via mol Manager");
     }
 
     public void SwitchLocking()
     {
         locked = !locked;
+        BackgroundAnimationHappening = !BackgroundAnimationHappening;
     }
 
 
@@ -314,6 +344,7 @@ public class MoleculeManager : MonoBehaviour
         }
         if (!alreadyProduced)
         {
+            
             GameObject newMol = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
             Debug.Log("tracked image, reference image name" + trackedImage.referenceImage.name);
             Visual visual = newMol.GetComponent<Visual>();
@@ -324,6 +355,7 @@ public class MoleculeManager : MonoBehaviour
             newMol.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
             visual.changeRenderingMethod(renderingStyleStorage); // make sure new visual has the correct rendering method 
             activeVisuals.Add(visual);
+            
         }
     }
 

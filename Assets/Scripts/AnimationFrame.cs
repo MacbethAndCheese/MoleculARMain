@@ -27,8 +27,7 @@ public class AnimationFrame : MonoBehaviour
         {
             if (!f.name.Contains("bond")) {
 
-                FrameInfo.Add(new InfoHolder(f.transform.position, f.transform.rotation, 1f, f.transform.gameObject.name));
-                Debug.Log("HELLO?");
+                FrameInfo.Add(new InfoHolder(f.transform.localPosition, f.transform.localRotation, 1f, f.transform.gameObject.name));
             }
         }
     }
