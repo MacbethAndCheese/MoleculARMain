@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -325,6 +325,14 @@ public class MoleculeManager : MonoBehaviour
         BackgroundAnimationHappening = !BackgroundAnimationHappening;
 
         Debug.Log("reset via mol Manager");
+    }
+
+    public void ClearMolecules(){ //this clears all molecules
+        foreach(Visual vis in activeVisuals)
+        {
+           toRemoveBuffer.Add(vis); //add all visualss to the removal buffer
+        }
+        RemoveVisualsInToRemoveBuffer(); //remove them
     }
 
     public void SwitchLocking()
