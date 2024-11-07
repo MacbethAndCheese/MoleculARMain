@@ -100,7 +100,7 @@ public class Visual : MonoBehaviour
                 string secondModelName = myModels[1].name;
                 string secondModelType = secondModelName.Substring(secondModelName.IndexOf("_") + 1, secondModelName.IndexOf("#") - secondModelName.IndexOf("_") - 1);
 
-                // Debug.Log(secondModelType+"<><><><><><><><>");
+                //Debug.Log(secondModelType + "<><><><><><><><>");
                 if (myModels.Count == 2)
                 {
                     if (secondModelType.Equals("BallAndStickNoLP"))
@@ -129,7 +129,9 @@ public class Visual : MonoBehaviour
                 isMolecule = false;
             }
         }
-        isMolecule = false;
+        else {
+            isMolecule = false;
+        }
     }
 
 
@@ -180,6 +182,7 @@ public class Visual : MonoBehaviour
     /// returns 0 or 1 depending on ball and stick vs space filling, if not a molecule, returns a 0</returns>
     public int AdjustRenderingMethodIndexBasedOnTypeOfVisual(int newRenderingMethod)
     {
+        //Debug.Log("this is the input: " + newRenderingMethod);
         int indexOfModel=0;
         if (isMolecule)
         {
@@ -233,6 +236,7 @@ public class Visual : MonoBehaviour
                 }
             }
         }
+        //Debug.Log("this should be the output: " + indexOfModel);
 
         return indexOfModel;
     }

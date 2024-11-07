@@ -535,3 +535,133 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: SN2Anim
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5439111722539738507
+      m_GuidHigh: 5522321764888749501
+    m_SerializedTextureGuid:
+      m_GuidLow: 1455974446998109195
+      m_GuidHigh: 11626977488602970907
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CF4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5567366668603305916
+      m_GuidHigh: 265393532178342073
+    m_SerializedTextureGuid:
+      m_GuidLow: 11852387478278585214
+      m_GuidHigh: 17975362953834547787
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CH2BrCl
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4732753005438657698
+      m_GuidHigh: 18180763231608916121
+    m_SerializedTextureGuid:
+      m_GuidLow: 8378645616269332558
+      m_GuidHigh: 12838384713210335578
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CH2F2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4878075374052463785
+      m_GuidHigh: 8572394271148135041
+    m_SerializedTextureGuid:
+      m_GuidLow: 11868413496572328295
+      m_GuidHigh: 8998134728487090683
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CH3F
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5333751034914935762
+      m_GuidHigh: 14587132962209814415
+    m_SerializedTextureGuid:
+      m_GuidLow: 6081018988027452855
+      m_GuidHigh: 669998482292706344
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CH3OH
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5192629739723251065
+      m_GuidHigh: 11814280719060512900
+    m_SerializedTextureGuid:
+      m_GuidLow: 14155533507650369098
+      m_GuidHigh: 12306915679000143386
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CHF3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5237119125483071040
+      m_GuidHigh: 14812330985650291363
+    m_SerializedTextureGuid:
+      m_GuidLow: 14155533507650369098
+      m_GuidHigh: 12306915679000143386
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: CHF3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4814840419466176132
+      m_GuidHigh: 1694353829301573544
+    m_SerializedTextureGuid:
+      m_GuidLow: 14191196278851258456
+      m_GuidHigh: 11147648227607419371
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: R-CBrClFI
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5492392741325121807
+      m_GuidHigh: 9299613472199362958
+    m_SerializedTextureGuid:
+      m_GuidLow: 6089032535968692749
+      m_GuidHigh: 1584739705328521306
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: R-CH3CBrClF
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5074255984692521232
+      m_GuidHigh: 17069426491763474857
+    m_SerializedTextureGuid:
+      m_GuidLow: 7266285272089436002
+      m_GuidHigh: 5892265559562029688
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: R-CHBrClF
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5454416102553500149
+      m_GuidHigh: 9559340616287112327
+    m_SerializedTextureGuid:
+      m_GuidLow: 17619471643585447115
+      m_GuidHigh: 18235704628983883273
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: S-CBrClFI
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4959082122047600626
+      m_GuidHigh: 4450226775573326983
+    m_SerializedTextureGuid:
+      m_GuidLow: 9547454846271755953
+      m_GuidHigh: 17803928836134025002
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: S-CH3CBrClF
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4990020950372588880
+      m_GuidHigh: 14230854946476520622
+    m_SerializedTextureGuid:
+      m_GuidLow: 7266037029639773637
+      m_GuidHigh: 14908497315841702824
+    m_Size: {x: 0.0254, y: 0.0254}
+    m_SpecifySize: 1
+    m_Name: S-CHBrClF
+    m_Texture: {fileID: 0}
