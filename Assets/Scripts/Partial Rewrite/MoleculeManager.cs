@@ -52,7 +52,7 @@ public class MoleculeManager : MonoBehaviour
 
     private int renderingStyleStorage = 0; //storing rendering style for new molecule creation
 
-    private int _maximumInactivityTime = 8000; //normally 800
+    private int _maximumInactivityTime = 1600; //normally 800
    
     public GameObject vPrefabTest; //for internal diagnostic use (I THINK) (i think not?)
 
@@ -66,21 +66,22 @@ public class MoleculeManager : MonoBehaviour
     /// <summary>
     /// TODO still, fix the text in instructions. Figure out how to make anchor point shifting still possible whilst also letting three finger touch work for animation. Toggling on and off of animation scrolling. 
     /// </summary>
+    /// Issues right now with doing the correct type of visualisation
     void Start()
     {
         //this is just for internal testing and should be removed before launch
         //-----
-        /* GameObject vGO = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
+        /*GameObject vGO = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
          Visual v = vGO.GetComponent<Visual>();
-         v.vName = "BeF2";
+         v.vName = "S-CHBrClF";
          v.RunSetup();
          v.ShowMe();
          vGO.transform.localScale = Vector3.one * scaleFactorMod * Mathf.Pow(2f, scale);
          activeVisuals.Add(v);
 
-         GameObject vGO2 = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
+        GameObject vGO2 = Instantiate(vPrefabTest, Vector3.zero, Quaternion.identity);
          Visual v2 = vGO2.GetComponent<Visual>();
-         v2.vName = "BrF3";
+         v2.vName = "R-CHBrClF";
          v2.RunSetup();
          v2.ShowMe();
          vGO2.transform.position = Vector3.left;
@@ -142,25 +143,26 @@ public class MoleculeManager : MonoBehaviour
             //testAnimHolder=visual.GetComponentInChildren<AnimationController>();
             //testAnimHolder.Animate(Mathf.Clamp(Input.mousePosition.x / Screen.width * 100f, 0, 100f));
 
+        }*/
+        //counter++;
+
+        /*counter++;
+
+        if (counter == 200)
+        {
+            UpdateRendering(1);
+
         }
-        counter++;*/
+        if (counter == 400)
+        {
+            UpdateRendering(2);
 
+        }
+        if (counter == 600)
+        {
+            UpdateRendering(3);
 
-        //if(counter == 200)
-        //  {
-        //      UpdateRendering(1);
-
-        //  }
-        //  if (counter == 400)
-        //  {
-        //      UpdateRendering(2);
-
-        //  }
-        //  if (counter == 600)
-        //  {
-        //      UpdateRendering(3);
-
-        //  }
+        }*/
 
         //if (scale > 100) { scale = 1; }
         //scale+=0.1f;
@@ -214,7 +216,7 @@ public class MoleculeManager : MonoBehaviour
         renderingStyleStorage = renderingStyle;
         foreach (Visual mB in activeVisuals) //every active visual
         {
-
+            Debug.Log("got here");
             mB.changeRenderingMethod(renderingStyle); //set the rendering style to new one
         }
     }
