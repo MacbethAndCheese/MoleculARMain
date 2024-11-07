@@ -506,36 +506,6 @@ MonoBehaviour:
     m_Name: fz3Orbital
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 4747146806917560771
-      m_GuidHigh: 12414853754720667068
-    m_SerializedTextureGuid:
-      m_GuidLow: 11869427086382213387
-      m_GuidHigh: 10217835984549144410
-    m_Size: {x: 0.0254, y: 0.0254}
-    m_SpecifySize: 1
-    m_Name: RingFlipAnim
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5489645113608252877
-      m_GuidHigh: 9304508603163104951
-    m_SerializedTextureGuid:
-      m_GuidLow: 14133095235113674844
-      m_GuidHigh: 894479998029621658
-    m_Size: {x: 0.0254, y: 0.0254}
-    m_SpecifySize: 1
-    m_Name: NewmanAnim
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5243584822845786446
-      m_GuidHigh: 12458296245914004133
-    m_SerializedTextureGuid:
-      m_GuidLow: 11876166359574308783
-      m_GuidHigh: 9272955129192062378
-    m_Size: {x: 0.0254, y: 0.0254}
-    m_SpecifySize: 1
-    m_Name: SN2Anim
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
       m_GuidLow: 5411234735208779838
       m_GuidHigh: 13744464599802499500
     m_SerializedTextureGuid:
