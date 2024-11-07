@@ -308,7 +308,7 @@ public class NewTouchManager : MonoBehaviour
                                                                                   //but avoids accidental triggering on unstable input
                             {
                                 Debug.Log("reset position"); 
-                                m_MoleculeManager.ResetMoleculePositions(); //if one finger double tap,
+                                m_MoleculeManager.ClearMolecules(); //if one finger double tap,
                                                                             //reset positions of molecules back to center
                             }
                             timeSinceTap[0] = 0; //if not a double tap, reset this counter the first finger

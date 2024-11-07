@@ -52,7 +52,7 @@ public class MoleculeManager : MonoBehaviour
 
     private int renderingStyleStorage = 0; //storing rendering style for new molecule creation
 
-    private int _maximumInactivityTime = 8000; //normally 800
+    private int _maximumInactivityTime = 800; //normally 800
    
     public GameObject vPrefabTest; //for internal diagnostic use (I THINK) (i think not?)
 
@@ -323,6 +323,14 @@ public class MoleculeManager : MonoBehaviour
         BackgroundAnimationHappening = !BackgroundAnimationHappening;
 
         Debug.Log("reset via mol Manager");
+    }
+
+    public void ClearMolecules(){ //this clears all molecules
+        foreach(Visual vis in activeVisuals)
+        {
+           toRemoveBuffer.Add(vis); //add all visualss to the removal buffer
+        }
+        RemoveVisualsInToRemoveBuffer(); //remove them
     }
 
     public void SwitchLocking()
