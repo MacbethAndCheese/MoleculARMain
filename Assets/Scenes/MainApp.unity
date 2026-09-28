@@ -814,9 +814,9 @@ GameObject:
   m_Component:
   - component: {fileID: 487186421}
   - component: {fileID: 487186417}
-  - component: {fileID: 487186420}
   - component: {fileID: 487186419}
   - component: {fileID: 487186418}
+  - component: {fileID: 487186422}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -907,18 +907,6 @@ MonoBehaviour:
   m_LightEstimation: 0
   m_FacingDirection: 1
   m_RenderMode: 0
---- !u!114 &487186420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487186416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3c44306fb1e439a9f18b2212b8ab70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &487186421
 Transform:
   m_ObjectHideFlags: 0
@@ -935,6 +923,24 @@ Transform:
   - {fileID: 691846754}
   m_Father: {fileID: 737582821}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &487186422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487186416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Device: 0
+  m_PoseSource: 6
+  m_PoseProviderComponent: {fileID: 0}
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_UseRelativeTransform: 0
 --- !u!1 &544582183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,12 +1140,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 737582821}
-  - component: {fileID: 737582820}
-  - component: {fileID: 737582822}
   - component: {fileID: 737582823}
   - component: {fileID: 737582824}
   - component: {fileID: 737582825}
   - component: {fileID: 737582826}
+  - component: {fileID: 737582828}
+  - component: {fileID: 737582827}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -1147,23 +1153,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &737582820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737582819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520bb47c46cf8624fafb307b7d1b862a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 487186417}
-  m_OriginBaseGameObject: {fileID: 737582819}
-  m_CameraFloorOffsetObject: {fileID: 0}
-  m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.1176
 --- !u!4 &737582821
 Transform:
   m_ObjectHideFlags: 0
@@ -1180,21 +1169,6 @@ Transform:
   - {fileID: 487186421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &737582822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737582819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedLibrary: {fileID: 11400000, guid: 7038c7158a904473abdaff502d160280, type: 2}
-  m_MaxNumberOfMovingImages: 30
-  m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &737582823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,6 +1233,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nanoMeterBondWidth: 0.025
+--- !u!114 &737582827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737582819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: 7038c7158a904473abdaff502d160280, type: 2}
+  m_MaxNumberOfMovingImages: 10
+  m_TrackedImagePrefab: {fileID: 0}
+--- !u!114 &737582828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737582819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 487186417}
+  m_OriginBaseGameObject: {fileID: 737582819}
+  m_CameraFloorOffsetObject: {fileID: 0}
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 0
 --- !u!1 &863620928
 GameObject:
   m_ObjectHideFlags: 0
