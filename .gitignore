@@ -47,6 +47,9 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+#hate DS_Store
+*.DS_Store
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
